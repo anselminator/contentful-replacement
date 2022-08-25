@@ -4,7 +4,7 @@
     "description": "",
     "main": "main.js",
     "scripts": {
-        "start": "npm run main.js",
+        "start": "node main.js",
         "fetch": "node fetchFromContentful.js",
         "dev": "nodemon main.js",
         "test": "echo \"Error: no test specified\" && exit 1"
