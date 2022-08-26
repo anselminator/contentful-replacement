@@ -5,7 +5,10 @@ const db = require("./database/client.js");
 const fs = require("fs");
 const fakeDB = require("./contentful.json");
 const axios = require("axios");
+const cors = require('cors');
+
 let app = express();
+
 
 console.log(__dirname);
 
@@ -15,6 +18,7 @@ const PUToptions = {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 app.route("/showGet").get((req, res) => {
     console.log("query:", req.query);
