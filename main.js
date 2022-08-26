@@ -5,10 +5,9 @@ const db = require("./database/client.js");
 const fs = require("fs");
 const fakeDB = require("./contentful.json");
 const axios = require("axios");
-const cors = require('cors');
+const cors = require("cors");
 
 let app = express();
-
 
 console.log(__dirname);
 
@@ -58,6 +57,16 @@ app.route("/postlist").get(async(req, res) => {
 
 app.get("/", (req, res) => {
     res.send("Hello world");
+});
+
+app.get("/insertCategories", async(req, res) => {
+    console.log("Trying to insert all categories  into Elephant...");
+    fakeDB.items.fields.categories.map((e, i) =>
+        console.log("wow we have cat: ", e)
+    );
+    const { rows } = await db.query("SELECT * FROM categories;", []);
+    console.log("Elephant SQL responded with:", rows);
+    res.send(rows);
 });
 
 app.get("/allCategories", async(req, res) => {
